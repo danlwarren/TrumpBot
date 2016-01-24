@@ -39,5 +39,5 @@ while(1){
       print(out.sentence)
       tweet(out.sentence)   
    }
-   Sys.sleep(300)
+   Sys.sleep(1800)
 }
