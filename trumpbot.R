@@ -16,6 +16,9 @@ diarrhea.in <- readLines(infile)
 infile2 <- file("trumptweets.txt")
 tweets.in <- readLines(infile2)
 
+appends <- file("trumpappends.txt")
+appends.in <- readLines(appends)
+
 diarrhea.in <- c(diarrhea.in, tweets.in)
 
 diarrhea.in <- paste(diarrhea.in, collapse = " ")
@@ -31,6 +34,9 @@ while(1){
    for(i in 1:(length(sentence.starts) - 1)){
       this.sentence <- substr(trump.babble, sentence.starts[i]+2, sentence.starts[i+1])
       if(nchar(this.sentence) <= 140){
+         if(nchar(this.sentence) <= 100){
+            this.sentence <- paste(this.sentence, sample(appends.in, 1))
+         }
          sentences <- c(sentences, this.sentence)
       }
    }
